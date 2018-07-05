@@ -337,6 +337,9 @@
     <Compile Include="Editors\CodeFileController.cs" />
     <Compile Include="Editors\TourController.cs" />
     <Compile Include="Features\EnabledFeatures.cs" />
+    <Compile Include="HealthCheck\Checks\Security\BaseProtectSectionCheck.cs" />
+    <Compile Include="HealthCheck\Checks\Security\MailSettingsCheck.cs" />
+    <Compile Include="HealthCheck\Checks\Security\ConnectionStringsCheck.cs" />
     <Compile Include="HealthCheck\Checks\Security\XssProtectionCheck.cs" />
     <Compile Include="HealthCheck\Checks\Security\HstsCheck.cs" />
     <Compile Include="Models\BackOfficeTourFilter.cs" />
