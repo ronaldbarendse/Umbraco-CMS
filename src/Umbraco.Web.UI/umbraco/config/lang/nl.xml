@@ -152,8 +152,8 @@
     <key alias="otherElements">Eigenschappen</key>
     <key alias="parentNotPublished">Dit document is gepubliceerd maar niet zichtbaar omdat de bovenliggende node '%0%' niet gepubliceerd is</key>
     <key alias="parentNotPublishedAnomaly">Dit document is gepubliceerd, maar het staat niet in de cache (interne serverfout)</key>
-	<key alias="getUrlException">Kan de Url niet ophalen</key>
-    <key alias="routeError">Dit document is gepubliceerd, maar de Url conflicteert met %0%</key>
+    <key alias="getUrlException">Kan de URL niet ophalen</key>
+    <key alias="routeError">Dit document is gepubliceerd, maar de URL conflicteert met %0%</key>
     <key alias="publish">Publiceren</key>
     <key alias="publishStatus">Publicatiestatus</key>
     <key alias="releaseDate">Publiceren op</key>
@@ -289,7 +289,7 @@
     <key alias="recycleBinIsEmpty">De prullenbak is nu leeg.</key>
     <key alias="recycleBinWarning">Als items worden verwijderd uit de prullenbak, zijn ze voorgoed verwijderd.</key>
     <key alias="regexSearchError"><![CDATA[De webservice van <a target='_blank' href='http://regexlib.com'>regexlib.com</a> ondervindt momenteel problemen waarover we geen controle hebben. Onze excuses voor het ongemak.]]></key>
-    <key alias="regexSearchHelp">Zoek naar een reguliere expressie om validatie aan een formulierveld toe te voegen. Voorbeeld: 'email, 'post-code' 'url'</key>
+    <key alias="regexSearchHelp">Zoek naar een reguliere expressie om validatie aan een formulierveld toe te voegen. Voorbeeld: 'email', 'post-code' of 'url'.</key>
     <key alias="removeMacro">Verwijder Macro</key>
     <key alias="requiredField">Verplicht veld</key>
     <key alias="sitereindexed">Site is opnieuw geïndexeerd</key>
@@ -461,7 +461,7 @@
     <key alias="edit">Bewerk</key>
     <key alias="edited">Bewerkt</key>
     <key alias="elements">Elementen</key>
-    <key alias="email">Email</key>
+    <key alias="email">E-mailadres</key>
     <key alias="error">Fout</key>
     <key alias="findDocument">Vind</key>
     <key alias="height">Hoogte</key>
@@ -499,7 +499,7 @@
     <key alias="pleasewait">Een ogenblik geduld aub...</key>
     <key alias="previous">Vorige</key>
     <key alias="properties">Eigenschappen</key>
-    <key alias="reciept">Email om formulier resultaten te ontvangen</key>
+    <key alias="reciept">E-mailadres om formulier resultaten te ontvangen</key>
     <key alias="recycleBin">Prullenbak</key>
     <key alias="recycleBinEmpty">De prullenbak is leeg</key>
     <key alias="remaining">Overblijvend</key>
@@ -523,7 +523,7 @@
     <key alias="update">Update</key>
     <key alias="upgrade">Upgrade</key>
     <key alias="upload">Upload</key>
-    <key alias="url">Url</key>
+    <key alias="url">URL</key>
     <key alias="user">Gebruiker</key>
     <key alias="username">Gebruikersnaam</key>
     <key alias="value">Waarde</key>
@@ -713,17 +713,17 @@ Echter, Runway biedt een gemakkelijke basis om je snel op weg te helpen. Als je 
     <key alias="greeting5">Fijne vrijdag</key>
     <key alias="greeting6">Fijne zaterdag</key>    
     <key alias="instruction">log hieronder in</key>
-	<key alias="signInWith">Inloggen met</key>
+    <key alias="signInWith">Inloggen met</key>
     <key alias="timeout">Sessie is verlopen</key>
     <key alias="bottomText"><![CDATA[<p style="text-align:right;">&copy; 2001 - %0% <br /><a href="http://umbraco.com" style="text-decoration: none" target="_blank">umbraco.com</a></p>]]></key>
-	<key alias="forgottenPassword">Wachtwoord vergeten?</key>
-    <key alias="forgottenPasswordInstruction">Er zal een email worden gestuurd naar het emailadres van jouw account. Hierin staat een link om je wachtwoord te resetten</key>
-    <key alias="requestPasswordResetConfirmation">Een email met daarin de wachtwoord reset uitleg zal worden gestuurd als het emailadres in onze database voorkomt.</key>
+    <key alias="forgottenPassword">Wachtwoord vergeten?</key>
+    <key alias="forgottenPasswordInstruction">Er zal een e-mail worden gestuurd naar het e-mailadres van jouw account. Hierin staat een link om je wachtwoord te resetten.</key>
+    <key alias="requestPasswordResetConfirmation">Er zal een e-mail met daarin de wachtwoordreset-uitleg worden gestuurd als het e-mailadres in onze database voorkomt.</key>
     <key alias="returnToLogin">Terug naar loginformulier</key>
     <key alias="setPasswordInstruction">Geef alsjeblieft een nieuw wachtwoord op</key>
     <key alias="setPasswordConfirmation">Je wachtwoord is aangepast</key>
     <key alias="resetCodeExpired">De link die je hebt aangeklikt is niet (meer) geldig.</key>
-    <key alias="resetPasswordEmailCopySubject">Umbraco: Wachtwoord Reset</key>
+    <key alias="resetPasswordEmailCopySubject">Umbraco: Wachtwoord reset</key>
     <key alias="resetPasswordEmailCopyFormat">
       <![CDATA[<p>De gebruikersnaam om in te loggen bij jouw Umbraco omgeving is: <strong>%0%</strong></p><p>Klik <a href="%1%"><strong>hier</strong></a> om je wachtwoord te resetten of knip/plak deze URL in je browser:</p><p><em>%1%</em></p>]]>
     </key>
@@ -1515,9 +1515,9 @@ Om een vertalingstaak te sluiten, ga aub naar het detailoverzicht en klik op de 
   </area>
 	 <area alias="validation">
     <key alias="validation">Validatie</key>
-    <key alias="validateAsEmail">Valideer als email</key>
+    <key alias="validateAsEmail">Valideer als e-mailadres</key>
     <key alias="validateAsNumber">Valideer als nummer</key>
-    <key alias="validateAsUrl">Valideer als Url</key>
+    <key alias="validateAsUrl">Valideer als URL</key>
     <key alias="enterCustomValidation">...of gebruik custom validatie</key>
     <key alias="fieldIsMandatory">Veld is verplicht</key>
   </area>
@@ -1621,8 +1621,8 @@ Om een vertalingstaak te sluiten, ga aub naar het detailoverzicht en klik op de 
     <key alias="smtpMailSettingsConnectionSuccess">SMTP instellingen zijn correct ingesteld en werken zoals verwacht.</key>
     <key alias="smtpMailSettingsConnectionFail">De SMTP server geconfigureerd met host '%0%' en poort '%1%' kon niet gevonden worden. Controleer of de SMTP instellingen in Web.config file system.net/mailsettings correct zijn.</key>
 
-    <key alias="notificationEmailsCheckSuccessMessage"><![CDATA[Notificatie email is verzonden naar <strong>%0%</strong>.]]></key>
-    <key alias="notificationEmailsCheckErrorMessage"><![CDATA[Notificatie email staat nog steeds op de default waarde van <strong>%0%</strong>.]]></key>
+    <key alias="notificationEmailsCheckSuccessMessage"><![CDATA[Notificatie e-mail is verzonden naar <strong>%0%</strong>.]]></key>
+    <key alias="notificationEmailsCheckErrorMessage"><![CDATA[Notificatie e-mailadres staat nog steeds op de default waarde van <strong>%0%</strong>.]]></key>
 
     <key alias="tls12HealthCheckSuccess">Uw website kan het TLS 1.2 beveiligingsprotocol gebruiken bij het maken van uitgaande verbindingen naar HTTPS-eindpunten.</key>
     <key alias="tls12HealthCheckWarn">Uw website is niet geconfigureerd om het TLS 1.2 beveiligingsprotocol te kunnen gebruiken bij het maken van uitgaande verbindingen: sommige HTTPS-eindpunten zijn mogelijk niet bereikbaar via een minder veilig protocol.</key>

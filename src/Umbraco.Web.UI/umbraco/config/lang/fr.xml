@@ -214,8 +214,8 @@
     <key alias="otherElements">Propriétés</key>
     <key alias="parentNotPublished">Ce document est publié mais n'est pas visible car son parent '%0%' n'est pas publié</key>
     <key alias="parentNotPublishedAnomaly">Oups : ce document est publié mais n'est pas présent dans le cache (erreur interne Umbraco)</key>
-    <key alias="getUrlException">Oups: impossible d'obtenir cet url (erreur interne - voir fichier log)</key>
-    <key alias="routeError">Oups: ce document est publié mais son url entrerait en collision avec le contenu %0%</key>
+    <key alias="getUrlException">Oups: impossible d'obtenir cet URL (erreur interne - voir fichier log)</key>
+    <key alias="routeError">Oups: ce document est publié mais son URL entrerait en collision avec le contenu %0%</key>
     <key alias="publish">Publier</key>
     <key alias="published">Publié</key>
     <key alias="publishedPendingChanges">Publié (changements en cours)</key>
@@ -372,7 +372,7 @@
     <key alias="recycleBinIsEmpty">La corbeille est maintenant vide</key>
     <key alias="recycleBinWarning">Les éléments supprimés de la corbeille seront supprimés définitivement</key>
     <key alias="regexSearchError"><![CDATA[Le webservice <a target='_blank' href='http://regexlib.com'>regexlib.com</a> rencontre actuellement des problèmes sur lesquels nous n'avons aucun contrôle. Nous sommes sincèrement désolés pour le désagrément.]]></key>
-    <key alias="regexSearchHelp">Rechercher une expression régulière à ajouter pour la validation d'un champ de formulaire. Exemple: 'email, 'zip-code', 'url'</key>
+    <key alias="regexSearchHelp">Rechercher une expression régulière à ajouter pour la validation d'un champ de formulaire. Exemple: 'email', 'zip-code', 'url'.</key>
     <key alias="removeMacro">Supprimer la macro</key>
     <key alias="requiredField">Champ obligatoire</key>
     <key alias="sitereindexed">Le site a été réindéxé</key>
@@ -655,7 +655,7 @@
     <key alias="update">Mettre à jour</key>
     <key alias="upgrade">Upgrader</key>
     <key alias="upload">Télécharger</key>
-    <key alias="url">Url</key>
+    <key alias="url">URL</key>
     <key alias="user">Utilisateur</key>
     <key alias="username">Nom d'utilisateur</key>
     <key alias="value">Valeur</key>

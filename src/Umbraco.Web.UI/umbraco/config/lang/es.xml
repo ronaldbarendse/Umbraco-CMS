@@ -163,7 +163,7 @@
         <key alias="about">Acerca de</key>
         <key alias="alias">Link alternativo</key>
         <key alias="alternativeTextHelp">(como describe la imagen sobre el teléfono)</key>
-        <key alias="alternativeUrls">Vínculos Alternativos</key>
+        <key alias="alternativeUrls">Vínculos alternativos</key>
         <key alias="clickToEdit">Clic para editar esta entrada</key>
         <key alias="createBy">Creado por</key>
         <key alias="createByDesc" version="7.0">Autor original</key>
@@ -190,8 +190,8 @@
         <key alias="otherElements">Propiedades</key>
         <key alias="parentNotPublished">Este documento ha sido publicado pero no es visible porque el padre '%0%' no esta publicado</key>
         <key alias="parentNotPublishedAnomaly">Ups: este documento está publicado pero no está en la caché (error interno)</key>
-        <key alias="getUrlException">No se pudo obtener la url</key>
-        <key alias="routeError">Este documento está publicado pero tu url colisionará con contenido %0%</key>
+        <key alias="getUrlException">No se pudo obtener la URL</key>
+        <key alias="routeError">Este documento está publicado pero tu URL colisionará con contenido %0%</key>
         <key alias="publish">Publicar</key>
         <key alias="publishStatus">Estado de la Publicación</key>
         <key alias="releaseDate">Publicar el</key>
@@ -624,7 +624,7 @@
         <key alias="update">Actualizar</key>
         <key alias="upgrade">Actualizar</key>
         <key alias="upload">Subir</key>
-        <key alias="url">Url</key>
+        <key alias="url">URL</key>
         <key alias="user">Usuario</key>
         <key alias="username">Nombre de usuario</key>
         <key alias="value">Valor</key>
@@ -1738,7 +1738,7 @@
         <key alias="validation">Validación</key>
         <key alias="validateAsEmail">Validar como email</key>
         <key alias="validateAsNumber">Validar como número</key>
-        <key alias="validateAsUrl">Validar como Url</key>
+        <key alias="validateAsUrl">Validar como URL</key>
         <key alias="enterCustomValidation">...o introduce tu propia validación</key>
         <key alias="fieldIsMandatory">Campo obligatorio</key>
         <key alias="validationRegExp">Introduce una expresión regular</key>
@@ -1863,8 +1863,8 @@
     <area alias="redirectUrls">
         <key alias="disableUrlTracker">Desactivar URL tracker</key>
         <key alias="enableUrlTracker">Activar URL tracker</key>
-        <key alias="originalUrl">URL Original</key>
-        <key alias="redirectedTo">Redirigido a To</key>
+        <key alias="originalUrl">URL original</key>
+        <key alias="redirectedTo">Redirigido a to</key>
         <key alias="noRedirects">No se ha creado ninguna redirección</key>
         <key alias="noRedirectsDescription">Cuando una página es renombrada o movida, una redirección a la nueva página es automáticamente creada.</key>
         <key alias="removeButton">Eliminar</key>

@@ -351,7 +351,7 @@
     <key alias="update">Aggiorna</key>
     <key alias="upgrade">Aggiornamento</key>
     <key alias="upload">Carica</key>
-    <key alias="url">Url</key>
+    <key alias="url">URL</key>
     <key alias="user">Utente</key>
     <key alias="username"><![CDATA[Username]]></key>
     <key alias="value">Valore</key>
@@ -798,7 +798,7 @@ Per gestire il tuo sito web, è sufficiente aprire il back office di Umbraco e i
     <key alias="standardFields">Campi Standard</key>
     <key alias="uppercase">Maiuscolo</key>
     <key alias="urlEncode"><![CDATA[Codifica URL]]></key>
-    <key alias="urlEncodeHelp"><![CDATA[Andrà a sostituire i caratteri speciali con il loro equivalente negli url.]]></key>
+    <key alias="urlEncodeHelp"><![CDATA[Andrà a sostituire i caratteri speciali con il loro equivalente negli URL.]]></key>
     <key alias="usedIfAllEmpty"><![CDATA[Sarà usato solo se i valori dei campi sopra sono vuoti]]></key>
     <key alias="usedIfEmpty"><![CDATA[Questo campo sarà usato soltanto se il campo primario è vuoto]]></key>
     <key alias="withTime"><![CDATA[Si, aggiungi l'ora. Separatore: ]]></key>

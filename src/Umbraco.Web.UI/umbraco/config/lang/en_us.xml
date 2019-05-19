@@ -199,7 +199,7 @@
         <key alias="about">About this page</key>
         <key alias="alias">Alias</key>
         <key alias="alternativeTextHelp">(how would you describe the picture over the phone)</key>
-        <key alias="alternativeUrls">Alternative Links</key>
+        <key alias="alternativeUrls">Alternative links</key>
         <key alias="clickToEdit">Click to edit this item</key>
         <key alias="createBy">Created by</key>
         <key alias="createByDesc" version="7.0">Original author</key>
@@ -228,8 +228,8 @@
         <key alias="otherElements">Properties</key>
         <key alias="parentNotPublished">This document is published but is not visible because the parent '%0%' is unpublished</key>
         <key alias="parentNotPublishedAnomaly">This document is published but is not in the cache</key>
-        <key alias="getUrlException">Could not get the url</key>
-        <key alias="routeError">This document is published but its url would collide with content %0%</key>
+        <key alias="getUrlException">Could not get the URL</key>
+        <key alias="routeError">This document is published but its URL would collide with content %0%</key>
         <key alias="publish">Publish</key>
         <key alias="published">Published</key>
         <key alias="publishedPendingChanges">Published (pending changes)</key>
@@ -359,7 +359,7 @@
     <area alias="defaultdialogs">
         <key alias="nodeNameLinkPicker">Link title</key>
         <key alias="urlLinkPicker">Link</key>
-        <key alias="anchorLinkPicker">Anchor / querystring</key>
+        <key alias="anchorLinkPicker">Anchor/query string</key>
         <key alias="anchorInsert">Name</key>
         <key alias="closeThisWindow">Close this window</key>
         <key alias="confirmdelete">Are you sure you want to delete</key>
@@ -393,7 +393,7 @@
         <key alias="recycleBinIsEmpty">The recycle bin is now empty</key>
         <key alias="recycleBinWarning">When items are deleted from the recycle bin, they will be gone forever</key>
         <key alias="regexSearchError"><![CDATA[<a target='_blank' href='http://regexlib.com'>regexlib.com</a>'s webservice is currently experiencing some problems, which we have no control over. We are very sorry for this inconvenience.]]></key>
-        <key alias="regexSearchHelp">Search for a regular expression to add validation to a form field. Example: 'email, 'zip-code' 'url'</key>
+        <key alias="regexSearchHelp">Search for a regular expression to add validation to a form field. Example: 'email', 'zip-code' or 'url'.</key>
         <key alias="removeMacro">Remove Macro</key>
         <key alias="requiredField">Required Field</key>
         <key alias="sitereindexed">Site is reindexed</key>
@@ -682,7 +682,7 @@
         <key alias="update">Update</key>
         <key alias="upgrade">Upgrade</key>
         <key alias="upload">Upload</key>
-        <key alias="url">Url</key>
+        <key alias="url">URL</key>
         <key alias="user">User</key>
         <key alias="username">Username</key>
         <key alias="value">Value</key>
@@ -2207,8 +2207,8 @@ To manage your website, simply open the Umbraco back office and start adding con
         <key alias="disableUrlTracker">Disable URL tracker</key>
         <key alias="enableUrlTracker">Enable URL tracker</key>
         <key alias="originalUrl">Original URL</key>
-        <key alias="redirectedTo">Redirected To</key>
-        <key alias="redirectUrlManagement">Redirect Url Management</key>
+        <key alias="redirectedTo">Redirected to</key>
+        <key alias="redirectUrlManagement">Redirect URL Management</key>
         <key alias="panelInformation">The following URLs redirect to this content item:</key>
         <key alias="noRedirects">No redirects have been made</key>
         <key alias="noRedirectsDescription">When a published page gets renamed or moved a redirect will automatically be made to the new page.</key>

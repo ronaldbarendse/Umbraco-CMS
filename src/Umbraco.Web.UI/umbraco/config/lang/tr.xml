@@ -126,7 +126,7 @@
     <key alias="about">Bu sayfa hakkında</key>
     <key alias="alias">takma ad</key>
     <key alias="alternativeTextHelp">( nasıl telefon üzerinden resim anlatırsınız )</key>
-    <key alias="alternativeUrls">Alternatif Linkler</key>
+    <key alias="alternativeUrls">Alternatif linkler</key>
     <key alias="clickToEdit">Bu öğeyi düzenlemek için tıklayın</key>
     <key alias="createBy">Tarafından yaratıldı</key>
     <key alias="createByDesc" version="7.0">orijinal yazar</key>
@@ -174,7 +174,7 @@
   <area alias="media">
     <key alias="clickToUpload">Yüklemek için tıklayın</key>
     <key alias="dropFilesHere">Burada açılan dosyaları ...</key>
-    <key alias="urls">Medya Linki</key>
+    <key alias="urls">Medya linki</key>
   </area>
   <area alias="create">
     <key alias="chooseNode">Nerede yeni %0% yaratmak istiyorsun</key>
@@ -224,7 +224,7 @@
     <key alias="recycleBinIsEmpty">Geri dönüşüm kutusu artık boş</key>
     <key alias="recycleBinWarning">Öğeleri geri dönüşüm kutusu silindiğinde, onlar sonsuza kadar gitmiş olacak</key>
     <key alias="regexSearchError"><![CDATA[<a target='_blank' href='http://regexlib.com'>regexlib.com</a>'s webcoder şu anda üzerinde hiçbir kontrole sahip bazı sorunları, yaşanıyor. Bu rahatsızlıktan dolayı çok üzgünüz.]]></key>
-    <key alias="regexSearchHelp">Bir düzenli ifade arama form alanına doğrulama ekleyin. Örnek: 'E-posta', zip code 'url'</key>
+    <key alias="regexSearchHelp">Bir düzenli ifade arama form alanına doğrulama ekleyin. Örnek: 'email', 'zip-code', 'url'.</key>
     <key alias="removeMacro">Makro kaldır</key>
     <key alias="requiredField">Gerekli alan</key>
     <key alias="sitereindexed">Site yeniden indekslendi</key>

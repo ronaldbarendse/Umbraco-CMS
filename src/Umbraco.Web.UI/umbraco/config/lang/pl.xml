@@ -233,7 +233,7 @@
   <area alias="media">
     <key alias="clickToUpload">Kliknij, aby załadować plik</key>
     <key alias="dropFilesHere">Przerzuć swoje pliki tutaj...</key>
-	<key alias="urls">Link do mediów</key>
+    <key alias="urls">Link do mediów</key>
     <key alias="orClickHereToUpload">lub kliknij tutaj, aby wybrać pliki</key>
     <key alias="onlyAllowedFiles">Jedyne dozwolone typy plików to</key>
     <key alias="disallowedFileType">Nie można załadować pliku, typ pliku nie jest akceptowany</key>
