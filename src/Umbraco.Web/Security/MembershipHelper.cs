@@ -298,6 +298,20 @@ namespace Umbraco.Web.Security
 
         #region Querying for front-end
 
+        public virtual IPublishedContent GetByProviderKey(Udi key)
+        {
+            var guidUdi = key as GuidUdi;
+            if (guidUdi == null)
+                 throw new InvalidOperationException("The UDI provided isn't of type " + typeof(GuidUdi) + " which is required by members");
+
+            return GetByProviderKey(guidUdi.Guid);
+        }
+
+        public virtual IPublishedContent GetByProviderKey(Guid key)
+        {
+            return GetByProviderKey((object)key);
+        }
+
         public virtual IPublishedContent GetByProviderKey(object key)
         {
             return _applicationContext.ApplicationCache.RequestCache.GetCacheItem<IPublishedContent>(

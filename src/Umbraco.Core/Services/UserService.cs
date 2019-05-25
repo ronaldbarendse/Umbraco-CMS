@@ -171,7 +171,7 @@ namespace Umbraco.Core.Services
             var asInt = id.TryConvertTo<int>();
             if (asInt.Success)
             {
-                return GetById((int)id);
+                return GetById(asInt.Result);
             }
 
             return null;

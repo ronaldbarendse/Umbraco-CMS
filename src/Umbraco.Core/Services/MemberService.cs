@@ -908,12 +908,13 @@ namespace Umbraco.Core.Services
             var asGuid = id.TryConvertTo<Guid>();
             if (asGuid.Success)
             {
-                return GetByKey((Guid)id);
+                return GetByKey(asGuid.Result);
             }
+
             var asInt = id.TryConvertTo<int>();
             if (asInt.Success)
             {
-                return GetById((int)id);
+                return GetById(asInt.Result);
             }
 
             return null;
