@@ -1,226 +1,288 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Umbraco.Core.Configuration;
-using Umbraco.Core.Configuration.UmbracoSettings;
-using Umbraco.Web.PublishedCache;
 using Umbraco.Core;
+using Umbraco.Core.Configuration.UmbracoSettings;
 using Umbraco.Core.Models;
 
 namespace Umbraco.Web.Routing
 {
     /// <summary>
-    /// Provides urls.
+    /// Provides URLs.
     /// </summary>
     public class UrlProvider
     {
-        #region Ctor and configuration
+        #region Fields
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UrlProvider"/> class with an Umbraco context and a list of url providers.
+        /// The Umbraco context.
         /// </summary>
-        /// <param name="umbracoContext">The Umbraco context.</param>
-        /// <param name="routingSettings"></param>
-        /// <param name="urlProviders">The list of url providers.</param>
-        public UrlProvider(UmbracoContext umbracoContext, IWebRoutingSection routingSettings, IEnumerable<IUrlProvider> urlProviders)
-        {
-            if (umbracoContext == null) throw new ArgumentNullException("umbracoContext");
-            if (routingSettings == null) throw new ArgumentNullException("routingSettings");
-
-            _umbracoContext = umbracoContext;
-            _urlProviders = urlProviders;
-
-            var provider = UrlProviderMode.Auto;
-            Mode = provider;
-
-            if (Enum<UrlProviderMode>.TryParse(routingSettings.UrlProviderMode, out provider))
-            {
-                Mode = provider;
-            }    
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UrlProvider"/> class with an Umbraco context and a list of url providers.
-        /// </summary>
-        /// <param name="umbracoContext">The Umbraco context.</param>
-        /// <param name="urlProviders">The list of url providers.</param>
-        /// <param name="provider"></param>
-        public UrlProvider(UmbracoContext umbracoContext, IEnumerable<IUrlProvider> urlProviders, UrlProviderMode provider = UrlProviderMode.Auto)
-        {
-            if (umbracoContext == null) throw new ArgumentNullException("umbracoContext");
-
-            _umbracoContext = umbracoContext;
-            _urlProviders = urlProviders;
-
-            Mode = provider;
-        }
-
         private readonly UmbracoContext _umbracoContext;
+
+        /// <summary>
+        /// The URL providers.
+        /// </summary>
         private readonly IEnumerable<IUrlProvider> _urlProviders;
 
+        #endregion
+
+        #region Properties
+
         /// <summary>
-        /// Gets or sets the provider url mode.
+        /// Gets or sets the provider URL mode.
         /// </summary>
+        /// <value>
+        /// The provider URL mode.
+        /// </value>
         public UrlProviderMode Mode { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UrlProvider" /> class with an Umbraco context and a list of URL providers.
+        /// </summary>
+        /// <param name="umbracoContext">The Umbraco context.</param>
+        /// <param name="routingSettings">The routing settings.</param>
+        /// <param name="urlProviders">The list of URL providers.</param>
+        /// <exception cref="ArgumentNullException">umbracoContext
+        /// or
+        /// routingSettings</exception>
+        public UrlProvider(UmbracoContext umbracoContext, IWebRoutingSection routingSettings, IEnumerable<IUrlProvider> urlProviders)
+        {
+            this._umbracoContext = umbracoContext ?? throw new ArgumentNullException("umbracoContext");
+            this._urlProviders = urlProviders;
+
+            if (routingSettings == null)
+                throw new ArgumentNullException("routingSettings");
+
+            if (!Enum<UrlProviderMode>.TryParse(routingSettings.UrlProviderMode, out var provider))
+            {
+                provider = UrlProviderMode.Auto;
+            }
+
+            this.Mode = provider;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UrlProvider" /> class with an Umbraco context and a list of URL providers.
+        /// </summary>
+        /// <param name="umbracoContext">The Umbraco context.</param>
+        /// <param name="urlProviders">The list of URL providers.</param>
+        /// <param name="provider">The provider.</param>
+        /// <exception cref="ArgumentNullException">umbracoContext</exception>
+        public UrlProvider(UmbracoContext umbracoContext, IEnumerable<IUrlProvider> urlProviders, UrlProviderMode provider = UrlProviderMode.Auto)
+        {
+            this._umbracoContext = umbracoContext ?? throw new ArgumentNullException("umbracoContext");
+            this._urlProviders = urlProviders;
+
+            this.Mode = provider;
+        }
 
         #endregion
 
         #region GetUrl
 
         /// <summary>
-        /// Gets the url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on the current url.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on the current URL.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(Guid id)
         {
-            var intId = _umbracoContext.Application.Services.EntityService.GetIdForKey(id, UmbracoObjectTypes.Document);
-            return GetUrl(intId.Success ? intId.Result : -1);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, this.Mode);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <param name="absolute">A value indicating whether the url should be absolute in any case.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="absolute">A value indicating whether the URL should be absolute in any case.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless
-        /// <c>absolute</c> is true, in which case the url is always absolute.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless <c>absolute</c> is true, in which case the URL is always absolute.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(Guid id, bool absolute)
         {
-            var intId = _umbracoContext.Application.Services.EntityService.GetIdForKey(id, UmbracoObjectTypes.Document);
-            return GetUrl(intId.Success ? intId.Result : -1, absolute);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, absolute);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content id.</param>
-        /// <param name="current">The current absolute url.</param>
-        /// <param name="absolute">A value indicating whether the url should be absolute in any case.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="current">The current absolute URL.</param>
+        /// <param name="absolute">A value indicating whether the URL should be absolute in any case.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless
-        /// <c>absolute</c> is true, in which case the url is always absolute.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless <c>absolute</c> is true, in which case the URL is always absolute.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(Guid id, Uri current, bool absolute)
         {
-            var intId = _umbracoContext.Application.Services.EntityService.GetIdForKey(id, UmbracoObjectTypes.Document);
-            return GetUrl(intId.Success ? intId.Result : -1, current, absolute);
+            var mode = absolute ? UrlProviderMode.Absolute : this.Mode;
+
+            return this.GetUrl(id, current, mode);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <param name="mode">The url mode.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="mode">The URL mode.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>mode</c> and on the current url.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>mode</c> and on the current URL.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(Guid id, UrlProviderMode mode)
         {
-            var intId = _umbracoContext.Application.Services.EntityService.GetIdForKey(id, UmbracoObjectTypes.Document);
-            return GetUrl(intId.Success ? intId.Result : -1, mode);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, mode);
         }
 
         /// <summary>
-        /// Gets the url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="current">The current absolute URL.</param>
+        /// <param name="mode">The URL mode.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on the current url.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>mode</c> and on <c>current</c>.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
+        /// </remarks>
+        public string GetUrl(Guid id, Uri current, UrlProviderMode mode)
+        {
+            var intId = this._umbracoContext.Application.Services.EntityService.GetIdForKey(id, UmbracoObjectTypes.Document);
+            
+            return this.GetUrl(intId.Success ? intId.Result : -1, current, mode);
+        }
+
+        /// <summary>
+        /// Gets the URL of a published content.
+        /// </summary>
+        /// <param name="id">The published content identifier.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
+        /// <remarks>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on the current URL.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(int id)
         {
-            return GetUrl(id, _umbracoContext.CleanedUmbracoUrl, Mode);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, this.Mode);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <param name="absolute">A value indicating whether the url should be absolute in any case.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="absolute">A value indicating whether the URL should be absolute in any case.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless
-        /// <c>absolute</c> is true, in which case the url is always absolute.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless <c>absolute</c> is true, in which case the URL is always absolute.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(int id, bool absolute)
         {
-            var mode = absolute ? UrlProviderMode.Absolute : Mode;
-            return GetUrl(id, _umbracoContext.CleanedUmbracoUrl, mode);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, absolute);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content id.</param>
-        /// <param name="current">The current absolute url.</param>
-        /// <param name="absolute">A value indicating whether the url should be absolute in any case.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="current">The current absolute URL.</param>
+        /// <param name="absolute">A value indicating whether the URL should be absolute in any case.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless
-        /// <c>absolute</c> is true, in which case the url is always absolute.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>Mode</c> and on <c>current</c>, unless <c>absolute</c> is true, in which case the URL is always absolute.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(int id, Uri current, bool absolute)
         {
-            var mode = absolute ? UrlProviderMode.Absolute : Mode;
-            return GetUrl(id, current, mode);
+            var mode = absolute ? UrlProviderMode.Absolute : this.Mode;
+
+            return this.GetUrl(id, current, mode);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content identifier.</param>
-        /// <param name="mode">The url mode.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="mode">The URL mode.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>mode</c> and on the current url.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>mode</c> and on the current URL.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(int id, UrlProviderMode mode)
         {
-            return GetUrl(id, _umbracoContext.CleanedUmbracoUrl, mode);
+            return this.GetUrl(id, this._umbracoContext.CleanedUmbracoUrl, mode);
         }
 
         /// <summary>
-        /// Gets the nice url of a published content.
+        /// Gets the URL of a published content.
         /// </summary>
         /// <param name="id">The published content id.</param>
-        /// <param name="current">The current absolute url.</param>
-        /// <param name="mode">The url mode.</param>
-        /// <returns>The url for the published content.</returns>
+        /// <param name="current">The current absolute URL.</param>
+        /// <param name="mode">The URL mode.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>The url is absolute or relative depending on <c>mode</c> and on <c>current</c>.</para>
-        /// <para>If the provider is unable to provide a url, it returns "#".</para>
+        /// <para>The URL is absolute or relative depending on <c>mode</c> and on <c>current</c>.</para>
+        /// <para>If the provider is unable to provide a URL, it returns "#".</para>
         /// </remarks>
         public string GetUrl(int id, Uri current, UrlProviderMode mode)
         {
-            var url = _urlProviders.Select(provider => provider.GetUrl(_umbracoContext, id, current, mode))
+            var url = this._urlProviders.Select(provider => provider.GetUrl(this._umbracoContext, id, current, mode))
                 .FirstOrDefault(u => u != null);
+
             return url ?? "#"; // legacy wants this
         }
 
+        /// <summary>
+        /// Gets the URL from route using the <see cref="DefaultUrlProvider" />.
+        /// </summary>
+        /// <param name="id">The published content id.</param>
+        /// <param name="route">The route.</param>
+        /// <returns>
+        /// The URL for the published content.
+        /// </returns>
+        /// <remarks>
+        /// <para>If the <see cref="DefaultUrlProvider" /> cannot be found or is unable to provide a URL, it returns "#".</para>
+        /// </remarks>
         internal string GetUrlFromRoute(int id, string route)
         {
-            var provider = _urlProviders.OfType<DefaultUrlProvider>().FirstOrDefault();
-            var url = provider == null 
+            var provider = this._urlProviders.OfType<DefaultUrlProvider>().FirstOrDefault();
+            var url = provider == null
                 ? route // what else?
-                : provider.GetUrlFromRoute(route, UmbracoContext.Current, id, _umbracoContext.CleanedUmbracoUrl, Mode);
+                : provider.GetUrlFromRoute(route, UmbracoContext.Current, id, this._umbracoContext.CleanedUmbracoUrl, this.Mode);
+
             return url ?? "#";
         }
 
@@ -229,34 +291,38 @@ namespace Umbraco.Web.Routing
         #region GetOtherUrls
 
         /// <summary>
-        /// Gets the other urls of a published content.
+        /// Gets the other URLs of a published content.
         /// </summary>
         /// <param name="id">The published content id.</param>
-        /// <returns>The other urls for the published content.</returns>
+        /// <returns>
+        /// The other URLs for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>Other urls are those that <c>GetUrl</c> would not return in the current context, but would be valid
-        /// urls for the node in other contexts (different domain for current request, umbracoUrlAlias...).</para>
-        /// <para>The results depend on the current url.</para>
+        /// <para>Other URLs are those that <see cref="GetUrl" /> would not return in the current context,
+        /// but would be valid URLs for the node in other contexts (different domain for current request, umbracoURLAlias...).</para>
+        /// <para>The results depend on the current URL.</para>
         /// </remarks>
         public IEnumerable<string> GetOtherUrls(int id)
         {
-            return GetOtherUrls(id, _umbracoContext.CleanedUmbracoUrl);
+            return this.GetOtherUrls(id, this._umbracoContext.CleanedUmbracoUrl);
         }
 
         /// <summary>
-        /// Gets the other urls of a published content.
+        /// Gets the other URLs of a published content.
         /// </summary>
         /// <param name="id">The published content id.</param>
-        /// <param name="current">The current absolute url.</param>
-        /// <returns>The other urls for the published content.</returns>
+        /// <param name="current">The current absolute URL.</param>
+        /// <returns>
+        /// The other URLs for the published content.
+        /// </returns>
         /// <remarks>
-        /// <para>Other urls are those that <c>GetUrl</c> would not return in the current context, but would be valid
-        /// urls for the node in other contexts (different domain for current request, umbracoUrlAlias...).</para>
+        /// Other URLs are those that <see cref="GetUrl" /> would not return in the current context,
+        /// but would be valid URLs for the node in other contexts (different domain for current request, umbracoURLAlias...).
         /// </remarks>
         public IEnumerable<string> GetOtherUrls(int id, Uri current)
         {
-            // providers can return null or an empty list or a non-empty list, be prepared
-            var urls = _urlProviders.SelectMany(provider => provider.GetOtherUrls(_umbracoContext, id, current) ?? Enumerable.Empty<string>());
+            // Providers can return null or an empty list or a non-empty list, be prepared
+            var urls = this._urlProviders.SelectMany(provider => provider.GetOtherUrls(this._umbracoContext, id, current) ?? Enumerable.Empty<string>());
 
             return urls;
         }
