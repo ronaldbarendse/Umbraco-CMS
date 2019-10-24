@@ -21,7 +21,6 @@ namespace Umbraco.Core.Dashboards
         [DataMember(Name = "sections")]
         string[] Sections { get; }
 
-
         /// <summary>
         /// Gets the access rule determining the visibility of the dashboard.
         /// </summary>

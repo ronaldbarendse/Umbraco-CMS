@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core;
-using Umbraco.Core.Composing;
 using Umbraco.Core.Dashboards;
 using Umbraco.Core.Models.Membership;
 using Umbraco.Core.Services;
-using Umbraco.Core.Services.Implement;
 using Umbraco.Web.Dashboards;
 using Umbraco.Web.Models.ContentEditing;
 
 namespace Umbraco.Web.Services
 {
-	/// <summary>
+    /// <summary>
     /// A utility class for determine dashboard security
     /// </summary>
     internal class DashboardService : IDashboardService
     {
         // TODO: Unit test all this!!! :/
-	
+    
         private readonly ISectionService _sectionService;
         private readonly DashboardCollection _dashboardCollection;
         private readonly ILocalizedTextService _localizedText;
@@ -46,13 +44,18 @@ namespace Umbraco.Web.Services
                 if (dashboard.View.InvariantEndsWith(".ascx"))
                     throw new NotSupportedException("Legacy UserControl (.ascx) dashboards are no longer supported.");
 
-                var dashboards = new List<IDashboard> {dashboard};
+                var dashboards = new List<IDashboard>()
+                {
+                    dashboard
+                };
+
                 tabs.Add(new Tab<IDashboard>
                 {
                     Id = tabId++,
-                    Label = _localizedText.Localize("dashboardTabs", dashboard.Alias),
                     Alias = dashboard.Alias,
-                    Properties = dashboards
+                    Label = _localizedText.Localize("dashboardTabs", dashboard.Alias),
+                    Properties = dashboards,
+                    RequireHeader = dashboard.RequireHeader
                 });
             }
 

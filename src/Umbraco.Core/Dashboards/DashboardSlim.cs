@@ -8,5 +8,7 @@ namespace Umbraco.Core.Dashboards
         public string Alias { get; set; }
 
         public string View { get; set; }
+
+        public bool RequireHeader { get; set; }
     }
 }

@@ -6,11 +6,10 @@
 
         <div class="umb-dashboard" ng-if="!page.loading" data-element='dashboard'>
 
-            <div class="umb-dashboard__header" ng-show="dashboard.tabs.length > 1">
-                <umb-tabs-nav
-                    ng-if="dashboard.tabs"
-                    tabs="dashboard.tabs"
-                    on-tab-change="changeTab(tab)">
+            <div class="umb-dashboard__header" ng-show="dashboard.showHeader">
+                <umb-tabs-nav ng-if="dashboard.tabs"
+                              tabs="dashboard.tabs"
+                              on-tab-change="changeTab(tab)">
                 </umb-tabs-nav>
             </div>
 

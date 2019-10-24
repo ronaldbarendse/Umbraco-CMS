@@ -202,13 +202,13 @@ namespace Umbraco.Web.Editors
                 Id = x.Id,
                 Alias = x.Alias,
                 Label = x.Label,
-                Expanded = x.Expanded,
-                IsActive = x.IsActive,
                 Properties = x.Properties.Select(y => new DashboardSlim
                 {
                     Alias = y.Alias,
-                    View = y.View
-                })
+                    View = y.View,
+                    RequireHeader = y.RequireHeader
+                }),
+                RequireHeader = x.RequireHeader
             }).ToList();
         }
     }

@@ -18,5 +18,14 @@ namespace Umbraco.Core.Dashboards
         /// </summary>
         [DataMember(Name = "view")]
         string View { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this tab requires a header, even when it's the only tab in the section.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if a header is required; otherwise, <c>false</c>.
+        /// </value>
+        [DataMember(Name = "requireHeader")]
+        bool RequireHeader { get; }
     }
 }

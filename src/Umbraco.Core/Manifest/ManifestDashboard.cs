@@ -10,12 +10,12 @@ namespace Umbraco.Core.Manifest
     {
         private string _view;
 
-        [JsonProperty("alias", Required = Required.Always)]
-        public string Alias { get; set; }
-
         [JsonProperty("weight", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         [DefaultValue(100)] // must be equal to DashboardCollectionBuilder.DefaultWeight
         public int Weight { get; set; }
+
+        [JsonProperty("alias", Required = Required.Always)]
+        public string Alias { get; set; }
 
         [JsonProperty("view", Required = Required.Always)]
         public string View
@@ -23,6 +23,9 @@ namespace Umbraco.Core.Manifest
             get => _view;
             set => _view = IOHelper.ResolveVirtualUrl(value);
         }
+
+        [JsonProperty("requireHeader")]
+        public bool RequireHeader { get; set; }
 
         [JsonProperty("sections")]
         public string[] Sections { get; set; } = Array.Empty<string>();
