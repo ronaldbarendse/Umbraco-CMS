@@ -1208,7 +1208,7 @@ namespace Umbraco.Web
                     return umbracoContext.UrlProvider.GetUrl(content, mode, culture);
 
                 case PublishedItemType.Media:
-                    return umbracoContext.UrlProvider.GetMediaUrl(content, mode, culture, Constants.Conventions.Media.File);
+                    return umbracoContext.UrlProvider.GetMediaUrl(content, mode, culture);
 
                 default:
                     throw new NotSupportedException();
